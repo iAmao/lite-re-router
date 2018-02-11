@@ -5,7 +5,6 @@
           "modules": "commonjs"
         }
     ],
-    "es2015",
-    "react"
+    "react-app"
   ]
 }
