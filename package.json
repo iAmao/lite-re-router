@@ -10,6 +10,14 @@
     "build:package": "npm run build:commonjs && node scripts/copyBuild.js",
     "build:commonjs": "cross-env NODE_ENV=production babel ./src --out-dir ./lib --ignore spec.js"
   },
+  "keywords": [
+    "lite",
+    "react",
+    "routing",
+    "router",
+    "re-router",
+    "lite-re-router"
+  ],
   "author": "Inumidun Amao",
   "license": "MIT",
   "dependencies": {
@@ -34,6 +42,7 @@
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-react-app": "^2.1.0",
     "eslint-loader": "^1.9.0",
+    "eslint-plugin-flowtype": "^2.43.0",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.6.1",

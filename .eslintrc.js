@@ -1,5 +1,5 @@
 module.exports = {
-  "extends": "=react-app",
+  "extends": "react-app",
   "env": {
     "browser": true,
     "node": true,
@@ -14,6 +14,7 @@ module.exports = {
     "import/no-duplicates": 0,
     "import/no-extraneous-dependencies": 0,
     "import/named": 0,
+    "jsx-a11y/href-no-hash": 0,
     "import/namespace": 0,
     "import/no-unresolved": 0,
     "import/no-named-as-default": 2,

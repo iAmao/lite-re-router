@@ -11,10 +11,10 @@ import { History } from './history';
  */
 class Router extends React.Component {
   state = {
-      location: {
-          path: window.location.pathname,
-          query: formatQuery(window.location.search)
-      }
+    location: {
+      path: window.location.pathname,
+      query: formatQuery(window.location.search)
+    }
   };
 
   /**
@@ -23,7 +23,7 @@ class Router extends React.Component {
    * @member Router
    */
   componentDidMount() {
-      window.onpopstate = this.popState;
+    window.onpopstate = this.popState;
   }
 
   /**
@@ -31,7 +31,7 @@ class Router extends React.Component {
    * @member Router
    */
   componentWillUnmount() {
-      window.onpopstate = null;
+    window.onpopstate = null;
   }
 
   /**
@@ -40,10 +40,10 @@ class Router extends React.Component {
    * @member Router
    */
   popState = (event) => {
-      this.setState({ location: {
-          path: History.path(),
-          query: formatQuery(History.query())
-      } });
+    this.setState({ location: {
+      path: History.path(),
+      query: formatQuery(History.query())
+    } });
   }
 
   /**
@@ -52,11 +52,11 @@ class Router extends React.Component {
    * @param {String} path - URL to navigate to
    */
   push = (path) => {
-      this.setState({ location: {
-          path: path.split('?')[0],
-          query: pickQuery(path)
-      } });
-      History.push(History.state(), '', path);
+    this.setState({ location: {
+      path: path.split('?')[0],
+      query: pickQuery(path)
+    } });
+    History.push(History.state(), '', path);
   }
 
   /**
@@ -64,7 +64,7 @@ class Router extends React.Component {
    * @member Router
    */
   back = () => {
-      History.back();
+    History.back();
   }
 
   /**
@@ -72,14 +72,14 @@ class Router extends React.Component {
    * @member Router
    */
   getChildContext() {
-      return {
-          location: {
-              push: this.push,
-              back: this.back,
-              path: this.state.location.path,
-              query: this.state.location.query
-          }
-      };
+    return {
+      location: {
+        push: this.push,
+        back: this.back,
+        path: this.state.location.path,
+        query: this.state.location.query
+      }
+    };
   }
 
   /**
@@ -87,22 +87,22 @@ class Router extends React.Component {
    * @member Router
    */
   render() {
-      return this.props.render({
-          push: this.push,
-          back: this.back,
-          path: this.state.location.path,
-          query: this.state.location.query
-      });
+    return this.props.render({
+      push: this.push,
+      back: this.back,
+      path: this.state.location.path,
+      query: this.state.location.query
+    });
   }
 }
 
 // Type check child contexts
 Router.childContextTypes = {
   location: PropTypes.shape({
-      path: PropTypes.string,
-      push: PropTypes.func,
-      back: PropTypes.func,
-      query: PropTypes.object
+    path: PropTypes.string,
+    push: PropTypes.func,
+    back: PropTypes.func,
+    query: PropTypes.object
   })
 };
 
