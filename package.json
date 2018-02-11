@@ -1,0 +1,11 @@
+{
+  "name": "lite-re-router",
+  "version": "0.0.1",
+  "description": "A simplistic light weight routing library for react",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Inumidun Amao",
+  "license": "MIT"
+}
