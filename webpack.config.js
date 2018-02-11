@@ -8,33 +8,33 @@ module.exports = {
   },
   module: {
     rules: [
-       {
-         test: /\.(js|jsx|)$/,
-          enforce: 'pre',
-          use: [
-            {
-              options: {
-                eslintPath: require.resolve('eslint'),
+      {
+        test: /\.(js|jsx|)$/,
+        enforce: 'pre',
+        use: [
+          {
+            options: {
+              eslintPath: require.resolve('eslint'),
 
-              },
-              loader: require.resolve('eslint-loader'),
             },
-          ]
-       },
+            loader: require.resolve('eslint-loader'),
+          },
+        ],
+      },
       {
         test: /\.jsx?$/,
         use: 'babel-loader',
         exclude: /node_modules/,
-      }
-    ]
+      },
+    ],
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.json']
+    extensions: ['.js', '.jsx', '.json'],
   },
   devServer: {
     compress: true,
     historyApiFallback: true,
     contentBase: path.join(__dirname, 'build/'),
-    publicPath: '/'
-  }
+    publicPath: '/',
+  },
 };

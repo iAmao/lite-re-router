@@ -1,0 +1,8 @@
+checks:
+    javascript: true
+filter:
+    excluded_paths:
+        - src/**/*.spec.js
+        - .circleci/
+        - node_modules/
+        - scripts/
