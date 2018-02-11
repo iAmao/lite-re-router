@@ -1,4 +1,4 @@
-import { formatQuery, pickQuery } from '../util';
+import { formatQuery, pickQuery, getParams } from '../util';
 
 
 describe('util', () => {
@@ -16,5 +16,14 @@ describe('util', () => {
       name: 'Izuku Midoriya',
       "quirk": "Unknown"
     });
+  });
+
+  it('should generate param object and real url', () => {
+    const { params, trueRoute } = getParams(
+      '/customer/:id/name/:name',
+      '/customer/C3PO/name/Daisy Ridley'
+    );
+    expect(params).toEqual({ id: 'C3PO', name: 'Daisy Ridley' });
+    expect(trueRoute).toEqual('/customer/C3PO/name/Daisy Ridley');
   });
 });
