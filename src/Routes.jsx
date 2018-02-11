@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { getParams } from './util';
+import fourOhFourPage from './FourOhFour';
 
 /**
  * Routes component. responsible fo rmatching active route to the right component
@@ -43,6 +44,10 @@ const Routes = (props, context) => {
 
   // IF no route was matched, return 404
   if (!activeRoute.length) {
+    if (!fourOhFour) {
+      // default 404 page
+      return fourOhFourPage();
+    }
     return fourOhFour[1](routeProps);
   }
 

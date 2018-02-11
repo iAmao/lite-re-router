@@ -57,6 +57,18 @@ describe('Routes', () => {
       expect(wrapper.find('h3').text()).toEqual('About me');
     });
 
+    it('should return a default 404 page if a route is not found', () => {
+      window.history.pushState(null, '', '/about/me');
+      let wrapper = mount(<Router render={() => {
+          return <Routes routes={() => (
+            [
+              ['/', () => <h3>Home</h3>],
+            ]
+          )} />
+        }} />);
+      expect(wrapper.find('h2').text()).toEqual('404!');
+    });
+
     it('should return a 404 page if a route is not found', () => {
       window.history.pushState(null, '', '/about/me');
       let wrapper = mount(<Router render={() => {
