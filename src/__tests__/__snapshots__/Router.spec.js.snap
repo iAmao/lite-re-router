@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Router Snapshot Test should render the router component 1`] = `
+<div>
+  <h3>
+    This is router
+  </h3>
+</div>
+`;
