@@ -67,11 +67,11 @@ Router.childContextTypes = {
       push: PropTypes.func,
       back: PropTypes.func,
       query: PropTypes.object
-  })
+  });
 };
 
 Router.propTypes = {
   render: PropTypes.func.isRequired
-}
+};
 
 export default Router;
