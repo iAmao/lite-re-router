@@ -5,6 +5,10 @@ import { formatQuery, pickQuery } from './util';
 import { History } from './history';
 
 
+/**
+ * @class Router - parent router component.
+ * In charge of route event changes and routes state
+ */
 class Router extends React.Component {
   state = {
       location: {
@@ -13,14 +17,28 @@ class Router extends React.Component {
       }
   };
 
+  /**
+   * @method componentDidMount - attach a function to "onpopstate" event,
+   * just after render.
+   * @member Router
+   */
   componentDidMount() {
       window.onpopstate = this.popState;
   }
 
+  /**
+   * @method componentWillUnMount - remove event listener
+   * @member Router
+   */
   componentWillUnmount() {
       window.onpopstate = null;
   }
 
+  /**
+   * @method popState - trigherd by "onpopstate" event. update state properties
+   * to current location properties
+   * @member Router
+   */
   popState = (event) => {
       this.setState({ location: {
           path: History.path(),
@@ -28,6 +46,11 @@ class Router extends React.Component {
       } });
   }
 
+  /**
+   * @method push - navigate to new url
+   * @member Router
+   * @param {String} path - URL to navigate to
+   */
   push = (path) => {
       this.setState({ location: {
           path: path.split('?')[0],
@@ -36,10 +59,18 @@ class Router extends React.Component {
       History.push(History.state(), '', path);
   }
 
+  /**
+   * @method back - go back to previous URL
+   * @member Router
+   */
   back = () => {
       History.back();
   }
 
+  /**
+   * @method getChildContext
+   * @member Router
+   */
   getChildContext() {
       return {
           location: {
@@ -51,6 +82,10 @@ class Router extends React.Component {
       };
   }
 
+  /**
+   * @method render
+   * @member Router
+   */
   render() {
       return this.props.render({
           push: this.push,
@@ -61,6 +96,7 @@ class Router extends React.Component {
   }
 }
 
+// Type check child contexts
 Router.childContextTypes = {
   location: PropTypes.shape({
       path: PropTypes.string,
@@ -70,6 +106,8 @@ Router.childContextTypes = {
   })
 };
 
+
+// Type check props
 Router.propTypes = {
   render: PropTypes.func.isRequired
 };
