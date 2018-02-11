@@ -3,7 +3,7 @@
 exports[`Router Snapshot Test should render the router component 1`] = `
 <div>
   <h3>
-    This is router
+    Routing
   </h3>
 </div>
 `;
