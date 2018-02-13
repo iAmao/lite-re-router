@@ -3,6 +3,13 @@
 exports[`Link Snapshot Test renders a link 1`] = `
 <a
   onClick={[Function]}
+  style={
+    Object {
+      "color": "blue",
+      "cursor": "pointer",
+      "textDecoration": "underline",
+    }
+  }
 >
   Button
 </a>

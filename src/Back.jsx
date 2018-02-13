@@ -1,10 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import defaultStyle from './style';
 
-const Back = ({ children, ...props }, context) => {
+
+const Back = ({ children, style, ...props }, context) => {
+  const linkStyle = { ...defaultStyle, ...style };
+
   return (
-    <a {...props} onClick={() => context.location.back()}>
+    <a {...props} style={linkStyle} onClick={() => context.location.back()}>
       {children}
     </a>
   );

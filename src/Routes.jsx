@@ -41,7 +41,8 @@ const Routes = (props, context) => {
 
   // Make a copy of the context
   const routeProps = JSON.parse(JSON.stringify(context));
-
+  routeProps.location.push = context.location.push;
+  routeProps.location.back = context.location.back;
   // IF no route was matched, return 404
   if (!activeRoute.length) {
     if (!fourOhFour) {

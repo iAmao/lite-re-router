@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import defaultStyle from './style';
 
-const Link = ({ children, href,...props}, context) => {
+
+const Link = ({ children, href, style,...props}, context) => {
+  const linkStyle = { ...defaultStyle, ...style };
   return (
-    <a {...props} onClick={() => context.location.push(href)}>
+    <a {...props} style={linkStyle} onClick={() => context.location.push(href)}>
       {children}
     </a>
   );

@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 
 import { shallow } from 'enzyme';
 
-import Link from '../Link';
+import { Link } from '../';
 
 
 describe('Link', () => {

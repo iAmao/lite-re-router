@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 
 import { shallow } from 'enzyme';
 
-import Back from '../Back';
+import { Back } from '../';
 
 
 describe('Back', () => {
