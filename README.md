@@ -172,6 +172,14 @@ export const User = (props) => {
 
 ```
 
+#### Handling 404s
+By default, there is a default 404 page. This page is quite ugly though. But if you want to customize the looks of your 404 page, just add this to the routes:
+```
+['*', NotFoundPage]
+```
+Where, `*` means all other routes, and `NotFoundPage` is the component to be rendered in the case of such event.
+
+
 #### Components
 
 ##### Router
