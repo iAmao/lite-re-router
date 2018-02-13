@@ -22,7 +22,7 @@
   "author": "Inumidun Amao",
   "license": "MIT",
   "dependencies": {
-    "react": "^16.2.0",
+    "react": "^16.2.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
