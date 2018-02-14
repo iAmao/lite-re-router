@@ -45,10 +45,9 @@ export const getParams = (activeRoute, path) => {
   }, {});
 
   // Loop through each section in the real route to construct a url
-  const trueRoute = splitRoute.reduce((newRoute, routeFrag) => {
-    newRoute.push(params[routeFrag.substr(1)] || routeFrag);
-    return newRoute;
-  }, []).join('/');
+  const trueRoute = splitRoute
+    .map((routeFrag) => params[routeFrag.substr(1)] || routeFrag)
+    .join('/');
 
   return { trueRoute, params };
 }
