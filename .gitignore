@@ -3,6 +3,5 @@
 node_modules/
 lib/
 package-lock.json
-build/
 .DS_Store
 coverage/
