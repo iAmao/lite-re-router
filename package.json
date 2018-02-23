@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "repository": "https://github.com/iAmao/lite-re-router",
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "NODE_ENV=development webpack-dev-server",
     "test:dev": "jest --env=jsdom  --watch",
     "test": "jest --env=jsdom && codecov",
     "build:package": "npm run build:commonjs && node scripts/copyBuild.js",

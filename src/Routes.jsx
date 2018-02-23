@@ -52,9 +52,12 @@ const Routes = (props, context) => {
     return fourOhFour[1](routeProps);
   }
 
+  // const Component = activeRoute[0][1];
+
   // Set route params, if param symbol ":" is present in route,
   // set the parameter to the variable declared above;
   routeProps.location.params = activeRoute[0][0].match(':') ? routeParams : {};
+  // return <Component {...routeProps} />;
   return activeRoute[0][1](routeProps);
 }
 
