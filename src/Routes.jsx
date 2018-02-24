@@ -57,7 +57,6 @@ const Routes = (props, context) => {
   // Set route params, if param symbol ":" is present in route,
   // set the parameter to the variable declared above;
   routeProps.location.params = activeRoute[0][0].match(':') ? routeParams : {};
-
   if (!isCallableCheck(Component)) {
     return <Component { ...routeProps} />
   }
