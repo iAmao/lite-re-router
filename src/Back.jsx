@@ -5,6 +5,7 @@ import defaultStyle from './style';
 
 
 const Back = ({ children, style, ...props }, context) => {
+  
   const linkStyle = { ...defaultStyle, ...style };
 
   return (

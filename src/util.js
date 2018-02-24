@@ -51,3 +51,18 @@ export const getParams = (activeRoute, path) => {
 
   return { trueRoute, params };
 }
+/**
+ * isCallableCheck - checks if a function is a callable or constructable
+ * and a boolean in the either cases
+ * @export
+ * @param {function} obj 
+ * @returns {boolean}  - returns true or false
+ */
+export function isCallableCheck(obj) {
+  try {
+    obj();
+  } catch (err) {
+    return false;
+  }
+  return true;
+}

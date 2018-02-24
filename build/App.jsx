@@ -3,6 +3,8 @@ import React from 'react';
 import Link from '../src/Link';
 import Back from '../src/Back';
 import Router from '../src/Router';
+import Express from './Express';
+
 import Routes from '../src/Routes';
 
 
@@ -37,6 +39,7 @@ export const Index = (props) => {
       <Link style={style.link} href="/article/5?title=Route Easy">Route Easy</Link>
       <br/><br />
       <button onClick={() => props.location.push('/about')}>About US</button>
+      <button onClick={() => props.location.push('/class')}>Express</button>
     </div>
   );
 };
@@ -63,7 +66,7 @@ export const User = (props) => {
   );
 }
 
-const App = (props) => {
+export const App = (props) => {
   return (
     <div>
       <h2 onClick={() => props.push('/')}>Home</h2>
@@ -72,14 +75,16 @@ const App = (props) => {
           ['/', Index],
           ['/about', About],
           ['/article/:id', Article],
-          ['/user/:id', User]
+          ['/user/:id', User],
+          ['/class', Express]
         ]
       }}/>
     </div>
   );
 };
 
-
 export default () => {
   return (<Router render={App}/>);
 };
+
+
