@@ -57,6 +57,20 @@ describe('Routes', () => {
       expect(wrapper.find('h3').text()).toEqual('About me');
     });
 
+    it('should match component with exact rote if specified', () => {
+      window.history.pushState(null, '', '/about/me');
+      let wrapper = mount(<Router render={() => {
+          return <Routes routes={() => (
+            [
+              ['/about/:id', (props) => <h3>About {props.location.params.id}</h3>],
+              ['/about/me', (props) => <h3>About Me</h3>],
+              ['/about/edit/:id', (props) => <h3>Edit about Me</h3>]
+            ]
+          )} />
+        }} />);
+      expect(wrapper.find('h3').text()).toEqual('About Me');
+    });
+
     it('should return a default 404 page if a route is not found', () => {
       window.history.pushState(null, '', '/about/me');
       let wrapper = mount(<Router render={() => {

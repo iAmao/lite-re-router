@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { getParams, isCallableCheck } from './util';
+import { getParams } from './util';
 import fourOhFourPage from './FourOhFour';
 
 /**
@@ -32,8 +32,11 @@ const Routes = (props, context) => {
       const { trueRoute, params } = getParams(route[0], path);
 
       // Set the route parameter so it can be accessed outside this scope
-      routeParams = params;
-      return trueRoute === path;
+      if (trueRoute === path) {
+        routeParams = params;
+        return true;
+      }
+      return false;
     }
     return route[0] === path;
   });
@@ -42,6 +45,7 @@ const Routes = (props, context) => {
   const routeProps = JSON.parse(JSON.stringify(context));
   routeProps.location.push = context.location.push;
   routeProps.location.back = context.location.back;
+
   // IF no route was matched, return 404
   if (!activeRoute.length) {
     if (!fourOhFour) {
@@ -51,16 +55,21 @@ const Routes = (props, context) => {
     return fourOhFour[1](routeProps);
   }
 
-  const Component = activeRoute[0][1];
-  
+  let closestMatch;
+
+  if (activeRoute.length > 1) {
+    closestMatch = activeRoute.filter((route) => path === route[0])[0];
+  } else {
+    closestMatch = activeRoute[0];
+  }
+
+  const Component = closestMatch[1];
 
   // Set route params, if param symbol ":" is present in route,
   // set the parameter to the variable declared above;
-  routeProps.location.params = activeRoute[0][0].match(':') ? routeParams : {};
-  if (!isCallableCheck(Component)) {
-    return <Component { ...routeProps} />
-  }
-  return activeRoute[0][1](routeProps);
+  routeProps.location.params = closestMatch[0].match(':') ? routeParams : {};
+  
+  return <Component { ...routeProps} />
 }
 
 

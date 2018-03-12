@@ -51,6 +51,30 @@ export const Article = (props) => {
       <Link style={style.link} href="/user/5?name=Gin">Gin</Link>
       <h2>{props.location.query.title}</h2>
       <p>You are reading article of ID {props.location.params.id}</p>
+      <Link style={style.link} href="/article/create">Create new article</Link>
+      <Link style={style.link} href={`/article/edit/${props.location.params.id}`}>Edit article</Link>
+    </div>
+  );
+};
+
+export const Create = (props) => {
+  return (
+    <div style={style.container} >
+      <button onClick={() => props.location.back()}>Back</button>
+      <Link style={style.link} href="/user/5?name=Gin">Gin</Link>
+      <h2>{props.location.query.title}</h2>
+      <p>You are creating article</p>
+    </div>
+  );
+};
+
+export const Edit = (props) => {
+  return (
+    <div style={style.container} >
+      <button onClick={() => props.location.back()}>Back</button>
+      <Link style={style.link} href="/user/5?name=Gin">Gin</Link>
+      <h2>{props.location.query.title}</h2>
+      <p>You are editing article of ID {props.location.params.id}</p>
     </div>
   );
 };
@@ -74,9 +98,11 @@ export const App = (props) => {
         return [
           ['/', Index],
           ['/about', About],
-          ['/article/:id', Article],
           ['/user/:id', User],
-          ['/class', Express]
+          ['/class', Express],
+          ['/article/:id', Article],
+          ['/article/create', Create],
+          ['/article/edit/:id', Edit],
         ]
       }}/>
     </div>
