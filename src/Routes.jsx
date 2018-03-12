@@ -1,5 +1,6 @@
+import React from 'react';
 import PropTypes from 'prop-types';
-import { getParams } from './util';
+import { getParams, isCallableCheck } from './util';
 import fourOhFourPage from './FourOhFour';
 
 /**
@@ -11,10 +12,8 @@ import fourOhFourPage from './FourOhFour';
 const Routes = (props, context) => {
   // Get current path;
   const path = context.location.path;
-
   let routeParams;
   let fourOhFour;
-
   // Loop through each individual route
   const activeRoute = props.routes(path).filter((route) => {
     // If the current route is a wildcard, set the 404 page to
@@ -52,12 +51,15 @@ const Routes = (props, context) => {
     return fourOhFour[1](routeProps);
   }
 
-  // const Component = activeRoute[0][1];
+  const Component = activeRoute[0][1];
+  
 
   // Set route params, if param symbol ":" is present in route,
   // set the parameter to the variable declared above;
   routeProps.location.params = activeRoute[0][0].match(':') ? routeParams : {};
-  // return <Component {...routeProps} />;
+  if (!isCallableCheck(Component)) {
+    return <Component { ...routeProps} />
+  }
   return activeRoute[0][1](routeProps);
 }
 

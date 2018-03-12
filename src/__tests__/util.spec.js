@@ -1,4 +1,4 @@
-import { formatQuery, pickQuery, getParams } from '../util';
+import { formatQuery, pickQuery, getParams, isCallableCheck } from '../util';
 
 
 describe('util', () => {
@@ -25,5 +25,15 @@ describe('util', () => {
     );
     expect(params).toEqual({ id: 'C3PO', name: 'Daisy Ridley' });
     expect(trueRoute).toEqual('/customer/C3PO/name/Daisy Ridley');
+  });
+
+  it('should return a boolean if a function is a callable or constructable', () => {
+    const newFunc = function() {
+    }
+    class newObj {
+    }
+    expect(isCallableCheck(newFunc)).toEqual(true);
+    expect(isCallableCheck(newObj)).toEqual(false);
+    expect(function(){ isCallableCheck(newObj())}).toThrow(new TypeError('Cannot call a class as a function'));
   });
 });

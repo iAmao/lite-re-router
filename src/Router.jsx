@@ -57,6 +57,7 @@ class Router extends React.Component {
       query: pickQuery(path)
     } });
     History.push(History.state(), '', path);
+
   }
 
   /**
