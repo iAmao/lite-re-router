@@ -22,7 +22,7 @@
   "author": "Inumidun Amao",
   "license": "MIT",
   "dependencies": {
-    "react": "^16.2.0"
+    "react": "^16.8.6"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -48,7 +48,7 @@
     "eslint-plugin-react": "^7.6.1",
     "fs-extra": "^5.0.0",
     "jest": "^22.2.2",
-    "react-dom": "^16.2.0",
+    "react-dom": "^16.8.6",
     "react-test-renderer": "^16.2.0",
     "webpack": "^3.11.0",
     "webpack-dev-server": "^2.11.1"

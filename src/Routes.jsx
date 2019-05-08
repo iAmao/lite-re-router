@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { getParams } from './util';
 import fourOhFourPage from './FourOhFour';
+import { Context } from './Router';
 
 /**
  * Routes component. responsible fo rmatching active route to the right component
@@ -9,7 +10,10 @@ import fourOhFourPage from './FourOhFour';
  * @param {object} context - inherited properties from parent componentDidMount
  * @return {node} - component for current route
  */
-const Routes = (props, context) => {
+const Routes = (props) => {
+  // Get context
+  const context = React.useContext(Context);
+
   // Get current path;
   const path = context.location.path;
   let routeParams;
@@ -71,16 +75,6 @@ const Routes = (props, context) => {
   
   return <Component { ...routeProps} />
 }
-
-
-// Type checking the context
-Routes.contextTypes = {
-  location: PropTypes.shape({
-    path: PropTypes.string,
-    query: PropTypes.object,
-    push: PropTypes.func
-  })
-};
 
 // Type checking the proptypes
 Routes.propTypes = {

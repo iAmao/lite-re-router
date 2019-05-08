@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { formatQuery, pickQuery } from './util';
 import { History } from './history';
 
+export const Context = React.createContext();
 
 /**
  * @class Router - parent router component.
@@ -14,6 +15,15 @@ class Router extends React.Component {
     location: {
       path: window.location.pathname,
       query: formatQuery(window.location.search)
+    }
+  };
+
+  context = {
+    location: {
+      push: this.push,
+      back: this.back,
+      path: this.state.location.path,
+      query: this.state.location.query
     }
   };
 
@@ -72,40 +82,55 @@ class Router extends React.Component {
    * @method getChildContext
    * @member Router
    */
-  getChildContext() {
-    return {
-      location: {
-        push: this.push,
-        back: this.back,
-        path: this.state.location.path,
-        query: this.state.location.query
-      }
-    };
-  }
+  // getChildContext() {
+  //   return {
+  //     location: {
+  //       push: this.push,
+  //       back: this.back,
+  //       path: this.state.location.path,
+  //       query: this.state.location.query
+  //     }
+  //   };
+  // }
 
   /**
    * @method render
    * @member Router
    */
   render() {
-    return this.props.render({
-      push: this.push,
-      back: this.back,
-      path: this.state.location.path,
-      query: this.state.location.query
-    });
+    const contextValue = {
+      location: {
+        push: this.push,
+        back: this.back,
+        path: this.state.location.path,
+        query: this.state.location.query
+      }
+    }
+
+    return (
+      <Context.Provider value={contextValue}>
+        {
+          this.props.render({
+            push: this.push,
+            back: this.back,
+            path: this.state.location.path,
+            query: this.state.location.query
+          })
+        }
+      </Context.Provider>
+    );
   }
 }
 
 // Type check child contexts
-Router.childContextTypes = {
-  location: PropTypes.shape({
-    path: PropTypes.string,
-    push: PropTypes.func,
-    back: PropTypes.func,
-    query: PropTypes.object
-  })
-};
+// Router.childContextTypes = {
+//   location: PropTypes.shape({
+//     path: PropTypes.string,
+//     push: PropTypes.func,
+//     back: PropTypes.func,
+//     query: PropTypes.object
+//   })
+// };
 
 
 // Type check props
